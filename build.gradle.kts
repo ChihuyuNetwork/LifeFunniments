@@ -1,6 +1,5 @@
 plugins {
     kotlin("jvm") version "1.9.21"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
     id("xyz.jpenilla.run-paper") version "2.2.2"
     `maven-publish`
@@ -11,7 +10,7 @@ plugins {
 }
 
 group = "love.chihuyu"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.0"
 val pluginVersion: String by project.ext
 
 repositories {
@@ -20,6 +19,7 @@ repositories {
 //    maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.hirosuke.me/snapshots/")
     maven("https://repo.purpurmc.org/snapshots")
+    maven("https://repo.codemc.io/repository/maven-public/")
 }
 
 /*
@@ -35,6 +35,9 @@ dependencies {
 //    compileOnly("org.bukkit:bukkit:$pluginVersion-R0.1-SNAPSHOT")
     compileOnly("dev.jorel:commandapi-bukkit-core:9.2.0")
     compileOnly("dev.jorel:commandapi-bukkit-kotlin:9.2.0")
+    compileOnly("love.chihuyu:TimerAPI:1.4.1-SNAPSHOT")
+    compileOnly("de.tr7zw:item-nbt-api-plugin:2.12.1")
+    implementation("net.kyori:adventure-text-minimessage:4.14.0")
     compileOnly(kotlin("stdlib"))
 }
 
@@ -59,10 +62,6 @@ tasks {
             )))
             filteringCharset = "UTF-8"
         }
-    }
-
-    shadowJar {
-        exclude("org/slf4j/**")
     }
 
     runServer {

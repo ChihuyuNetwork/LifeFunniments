@@ -9,7 +9,7 @@ object FishingBattleListener: Listener {
     @EventHandler
     fun onFish(e: PlayerFishEvent) {
         FishingStorage.datas.forEach {
-            it.fished[e.player] = it.fished[e.player]?.inc() ?: 1
+            it.fished[e.player] = (it.fished[e.player] ?: 0).inc()
         }
     }
 }
